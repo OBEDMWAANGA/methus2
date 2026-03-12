@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+<link href="images/logo-methus.png" rel="icon" />
+<title>Calculator - Methus Money Solutions</title>
+<meta name="description" content="Calculate your money transfer fees with Methus Money Solutions">
+<meta name="author" content="Methus Money Solutions">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap">
+
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
+<style>
+</style>
+</head>
+<body>
+
+<div id="preloader">
+  <div data-loader="dual-ring"></div>
+</div>
+
+<div id="main-wrapper"> 
+  
+  <header id="header">
+    <div class="container">
+      <div class="header-row">
+        <div class="header-column justify-content-start"> 
+          <div class="logo me-3"> <a class="d-flex" href="index.html" title="Methus"><img src="images/logo-methus.png" alt="Methus" height="100"></a> </div>
+          
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#header-nav"> <span></span> <span></span> <span></span> </button>
+          
+          <nav class="primary-menu navbar navbar-expand-lg">
+            <div id="header-nav" class="collapse navbar-collapse">
+              <ul class="navbar-nav me-auto">
+                <li><a href="about-us.html">About Us</a></li>
+                <li><a href="our-services.html">Our Services</a></li>
+                <li><a href="calculator.html">Calculator</a></li>
+                <li><a href="contact-us.html">Contact Us</a></li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+        <div class="header-column justify-content-end"> 
+          <nav class="login-signup navbar navbar-expand">
+            <ul class="navbar-nav">
+              <li class="align-items-center h-auto ms-sm-3"><a class="btn btn-primary" href="calculator.html">Calculator</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  <div id="content">
+    
+    <section class="section">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center mb-5">
+            <h2 class="text-9 mb-4">Transfer Calculator</h2>
+            <p class="text-4">Use the Methus transfer calculator to quickly estimate the cost of sending money to China. Simply enter the amount you want to send, and the calculator will show the transfer fee and total amount required.</p>
+            <p class="text-3 text-muted">Our calculator is designed to help you plan your payments and understand the costs before making a transaction.</p>
+          </div>
+        </div>
+        
+        <div class="row justify-content-center">
+          <div class="col-lg-6">
+            <div class="card shadow-sm">
+              <div class="card-body p-5">
+                <div class="mb-4">
+                  <label for="amountCNY" class="form-label fw-bold text-3">Enter Amount in Chinese Yuan (CNY)</label>
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-money-bill-wave"></i></span>
+                    <input type="number" class="form-control form-control-lg" id="amountCNY" placeholder="Enter amount in CNY" min="0" step="0.01">
+                  </div>
+                </div>
+                
+                <div class="mb-4">
+                  <label class="form-label fw-bold text-3">Exchange Rate</label>
+                  <div class="p-3 bg-light rounded">
+                    <span class="text-4" id="exchangeRate">1 CNY = 2.85 ZMW</span>
+                    <small class="text-muted d-block mt-1">Rate set on: <span id="rateDate">Admin Dashboard</span></small>
+                  </div>
+                </div>
+                
+                <hr>
+                
+                <div id="calculating" class="text-center py-4 d-none">
+                  <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Calculating...</span>
+                  </div>
+                  <p class="mt-2 text-muted">Calculating...</p>
+                </div>
+                
+                <div id="results" class="d-none">
+                  <div class="result-item d-flex justify-content-between py-3 border-bottom">
+                    <span class="text-3">Amount in CNY:</span>
+                    <span class="fw-bold text-3" id="resultCNY">0.00</span>
+                  </div>
+                  <div class="result-item d-flex justify-content-between py-3 border-bottom">
+                    <span class="text-3">Converted to ZMW:</span>
+                    <span class="fw-bold text-3" id="resultZMW">K0.00</span>
+                  </div>
+                  <div class="result-item d-flex justify-content-between py-3 border-bottom">
+                    <span class="text-3">Transfer Fee:</span>
+                    <span class="fw-bold text-3 text-danger" id="resultFee">K0.00</span>
+                  </div>
+                  <div class="result-item d-flex justify-content-between py-4 bg-light rounded mt-3">
+                    <span class="fw-bold text-5">Total to Pay:</span>
+                    <span class="fw-bold text-5 text-primary" id="resultTotal">K0.00</span>
+                  </div>
+                </div>
+                
+                <div id="noResult" class="text-center py-4">
+                  <p class="text-muted text-3 mb-0">Enter an amount above to see the total</p>
+                </div>
+                
+                <div class="text-center mt-4">
+                  <a href="contact-us.html" class="btn btn-outline-primary"><i class="fab fa-whatsapp me-2"></i>Contact Us</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Image Section -->
+    <section class="section bg-white">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6 mb-4 mb-lg-0">
+            <img src="images/bg/image-3.jpg" alt="Money Transfer to China" class="img-fluid rounded shadow">
+          </div>
+          <div class="col-lg-6">
+            <h2 class="text-9 mb-4">Send Money to China with Confidence</h2>
+            <p class="text-4 mb-4">At Methus Money Solution, we make international money transfers simple, fast, and secure. Whether you're paying suppliers, importers, or business partners in China, we've got you covered.</p>
+            <ul class="list-unstyled text-3 lh-lg mb-4">
+              <li><i class="fas fa-check me-2 text-primary"></i>Competitive exchange rates</li>
+              <li><i class="fas fa-check me-2 text-primary"></i>Transparent transfer fees</li>
+              <li><i class="fas fa-check me-2 text-primary"></i>Fast and secure transfers</li>
+              <li><i class="fas fa-check me-2 text-primary"></i>Dedicated customer support</li>
+            </ul>
+            <a href="contact-us.html" class="btn btn-primary">Get in Touch</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+  
+  <footer id="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg d-lg-flex align-items-center">
+          <ul class="nav justify-content-center justify-content-lg-start text-3">
+            <li class="nav-item"> <a class="nav-link active" href="about-us.html">About Us</a></li>
+            <li class="nav-item"> <a class="nav-link" href="our-services.html">Our Services</a></li>
+            <li class="nav-item"> <a class="nav-link" href="calculator.html">Calculator</a></li>
+            <li class="nav-item"> <a class="nav-link" href="contact-us.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="col-lg d-lg-flex justify-content-lg-end mt-3 mt-lg-0">
+          <ul class="social-icons justify-content-center">
+            <li class="social-icons-facebook"><a data-bs-toggle="tooltip" href="http://www.facebook.com/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+            <li class="social-icons-twitter"><a data-bs-toggle="tooltip" href="http://www.twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a></li>
+            <li class="social-icons-google"><a data-bs-toggle="tooltip" href="http://www.google.com/" target="_blank" title="Google"><i class="fab fa-google"></i></a></li>
+            <li class="social-icons-youtube"><a data-bs-toggle="tooltip" href="http://www.youtube.com/" target="_blank" title="Youtube"><i class="fab fa-youtube"></i></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-copyright pt-3 pt-lg-2 mt-2">
+        <div class="row">
+          <div class="col-lg">
+            <p class="text-center text-lg-start mb-2 mb-lg-0">Copyright &copy; 2026 <a href="#">Methus Money Solutions</a>. All Rights Reserved.</p>
+          </div>
+          <div class="col-lg d-lg-flex align-items-center justify-content-lg-end">
+            <ul class="nav justify-content-center">
+              <li class="nav-item"> <a class="nav-link active" href="#">Security</a></li>
+              <li class="nav-item"> <a class="nav-link" href="#">Terms</a></li>
+              <li class="nav-item"> <a class="nav-link" href="#">Privacy</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+</div>
+
+<a id="back-to-top" data-bs-toggle="tooltip" title="Back to Top" href="javascript:void(0)"><i class="fa fa-chevron-up"></i></a> 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script> 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script> 
+<script src="js/theme.js"></script>
+
+<script>
+const DEFAULT_RATE = 2.85;
+
+const fees = [
+  { min: 0, max: 100, fee: 30 },
+  { min: 100, max: 1500, fee: 55 },
+  { min: 1500, max: 3000, fee: 100 },
+  { min: 3000, max: 4500, fee: 130 },
+  { min: 4500, max: 6000, fee: 180 },
+  { min: 6000, max: 7500, fee: 230 },
+  { min: 7500, max: 9000, fee: 280 },
+  { min: 9000, max: 11000, fee: 350 },
+  { min: 11000, max: 13000, fee: 400 },
+  { min: 13000, max: 15000, fee: 500 },
+  { min: 15000, max: 20000, fee: 550 },
+  { min: 20000, max: 25000, fee: 600 },
+  { min: 25000, max: 35000, fee: 750 },
+  { min: 35000, max: 50000, fee: 1000 },
+  { min: 50000, max: 70000, fee: 1200 },
+  { min: 70000, max: 100000, fee: 1500 },
+  { min: 100000, max: Infinity, fee: 1500 }
+];
+
+function getRate() {
+  const savedRate = localStorage.getItem('methusExchangeRate');
+  return savedRate ? parseFloat(savedRate) : DEFAULT_RATE;
+}
+
+function getFee(amountZMW) {
+  for (const tier of fees) {
+    if (amountZMW >= tier.min && amountZMW < tier.max) {
+      return tier.fee;
+    }
+  }
+  return 1500;
+}
+
+function formatCurrency(amount) {
+  return 'K' + amount.toLocaleString('en-ZM', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+
+function calculate() {
+  const amountCNY = parseFloat(document.getElementById('amountCNY').value);
+  
+  if (!amountCNY || amountCNY <= 0) {
+    document.getElementById('noResult').classList.remove('d-none');
+    document.getElementById('results').classList.add('d-none');
+    document.getElementById('calculating').classList.add('d-none');
+    return;
+  }
+  
+  document.getElementById('noResult').classList.add('d-none');
+  document.getElementById('calculating').classList.remove('d-none');
+  document.getElementById('results').classList.add('d-none');
+  
+  setTimeout(() => {
+    const rate = getRate();
+    const amountZMW = amountCNY * rate;
+    const fee = getFee(amountZMW);
+    const total = amountZMW + fee;
+    
+    document.getElementById('resultCNY').textContent = amountCNY.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' CNY';
+    document.getElementById('resultZMW').textContent = formatCurrency(amountZMW);
+    document.getElementById('resultFee').textContent = formatCurrency(fee);
+    document.getElementById('resultTotal').textContent = formatCurrency(total);
+    
+    document.getElementById('calculating').classList.add('d-none');
+    document.getElementById('results').classList.remove('d-none');
+  }, 500);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const rate = getRate();
+  document.getElementById('exchangeRate').textContent = '1 CNY = ' + rate + ' ZMW';
+  
+  const savedDate = localStorage.getItem('methusRateDate');
+  if (savedDate) {
+    document.getElementById('rateDate').textContent = savedDate;
+  }
+  
+  document.getElementById('amountCNY').addEventListener('input', calculate);
+});
+</script>
+
+</body>
+</html>
